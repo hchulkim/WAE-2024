@@ -7,7 +7,7 @@ using Plots
 
 σ=0.5
 
-ks=0.9
+ks=1
 
 α = 0.3
 
@@ -187,7 +187,7 @@ using Plots
 
 σ=2
 
-ks=0.9
+ks=1
 
 α = 0.3
 

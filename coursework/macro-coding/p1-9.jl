@@ -4,7 +4,7 @@ using Plots
 
 # Define parameters
 
-ks=0.95
+ks=1
 
 α = 0.3
 
