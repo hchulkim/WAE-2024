@@ -181,4 +181,29 @@ savefig("figures/plot1-9_c-value.png")  # save the value function plot
 
 
 
+using XLSX
 
+
+# Create a dictionary with the iteration, k_values, and c_values
+iterations = collect(1:iterations)  # Convert to a vector
+k_values = collect(k_values)  # Ensure k_values is a vector
+c_values = collect(c_values)  # Ensure c_values is a vector
+
+# Combine all data into a table-like structure
+table_data = hcat(iterations, k_values, c_values)
+
+# Write the data to an Excel file
+XLSX.openxlsx("tables/values_output_p1-9.xlsx", mode="w") do xf
+    sheet = xf[1]
+    # Write headers
+    sheet["A1"] = "Iteration"
+    sheet["B1"] = "K Values"
+    sheet["C1"] = "C Values"
+    
+    # Write the table data starting from A2
+    for i in 1:size(table_data, 1)
+        sheet["A$(i+1)"] = table_data[i, 1]
+        sheet["B$(i+1)"] = table_data[i, 2]
+        sheet["C$(i+1)"] = table_data[i, 3]
+    end
+end
